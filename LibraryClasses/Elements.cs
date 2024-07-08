@@ -9,6 +9,7 @@ using Android.Graphics.Drawables;
 using Android.Text;
 using System.Collections.Generic;
 using System.IO;
+using Android.App;
 
 
 
@@ -16,8 +17,10 @@ namespace LibraryClasses
 {
     public class Elements
     {
-        private Context _context;
-        private List<LinearLayout> blocks;
+        Context _context;
+        Activity act;
+        List<LinearLayout> blocks;
+
         public Elements(Context context)
         {
             _context = context;
@@ -39,6 +42,7 @@ namespace LibraryClasses
             block.LayoutParameters = layoutParams;
         }
 
+
         public LinearLayout CreateBlock(int topMargin, int bottomMargin, int leftMargin)
         {
             LinearLayout block = new LinearLayout(_context);
@@ -52,16 +56,17 @@ namespace LibraryClasses
                 ViewGroup.LayoutParams.MatchParent,
                 ViewGroup.LayoutParams.WrapContent)
             {
-                
+
                 TopMargin = topMargin,
                 BottomMargin = bottomMargin,
                 LeftMargin = leftMargin
             };
 
-            SetBlockWidth(block, 980, 220);
+            SetBlockWidth(block, 900, 220);
 
             return block;
         }
+
 
         public ImageView LoadImageFromResources(int resourceId)
         {
@@ -70,7 +75,15 @@ namespace LibraryClasses
             return imageView;
         }
 
-        public void ChangeBlockColor(LinearLayout block, string newColor)
+        public void ChangeBlockWidth(LinearLayout block, int width, int height)
+        {
+            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams)block.LayoutParameters;
+            layoutParams.Width = width;
+            layoutParams.Height = height;
+            block.LayoutParameters = layoutParams;
+        }
+
+        public void ChangeBlockWidth(LinearLayout block, string newColor)
         {
             GradientDrawable background = new GradientDrawable();
             background.SetCornerRadius(26f);
@@ -78,7 +91,7 @@ namespace LibraryClasses
             block.SetBackgroundDrawable(background);
         }
 
-        public void AddLabelAndImageToBlock(string headerText, string subheaderText, int imageResourceId, string newColor, Typeface tf)
+        public LinearLayout AddLabelAndImageToBlock(string headerText, int imageResourceId, string newColor, Typeface tf, string subheaderText = null, Button button = null, bool imageOnLeft = true)
         {
             // Создаем горизонтальный LinearLayout
             LinearLayout horizontalLayout = new LinearLayout(_context);
@@ -123,19 +136,45 @@ namespace LibraryClasses
                 ViewGroup.LayoutParams.WrapContent);
 
             // Добавляем вертикальный LinearLayout и ImageView в горизонтальный LinearLayout
-            horizontalLayout.AddView(verticalLayout);
-            horizontalLayout.AddView(imageView);
+            if (imageOnLeft)
+            {
+                horizontalLayout.AddView(imageView);
+                horizontalLayout.AddView(verticalLayout);
+            }
+            else
+            {
+                horizontalLayout.AddView(verticalLayout);
+                horizontalLayout.AddView(imageView);
+            }
 
             // Создаем новый вертикальный LinearLayout для блока
-            LinearLayout newBlock = CreateBlock(60,160,32);
+            LinearLayout newBlock = CreateBlock(60, 82, 40); // Задаем отступы для блока
             newBlock.AddView(horizontalLayout);
+
+            if (button != null)
+            {
+                button.LayoutParameters = new LinearLayout.LayoutParams(
+                    ViewGroup.LayoutParams.MatchParent,
+                    ViewGroup.LayoutParams.WrapContent);
+                newBlock.AddView(button);
+            }
+            else
+            {
+                button = null;
+            }
+
             GradientDrawable background = new GradientDrawable();
             background.SetCornerRadius(26f);
             background.SetColor(Color.ParseColor(newColor));
             newBlock.SetBackgroundDrawable(background);
+
             // Добавляем новый блок в родительский LinearLayout
             blocks.Add(newBlock);
+
+            return newBlock;
         }
+
+
         public void DisplayBlocks(ViewGroup parentLayout)
         {
             foreach (LinearLayout block in blocks)
