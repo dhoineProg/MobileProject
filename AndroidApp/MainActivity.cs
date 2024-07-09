@@ -10,6 +10,7 @@ using System;
 using System.Security.Cryptography.X509Certificates;
 using Xamarin.Essentials;
 using ElementsUI;
+using AndroidX.Core.Widget;
 
 namespace AndroidApp
 {
@@ -20,6 +21,7 @@ namespace AndroidApp
     {
         Elements elements;
         private LinearLayout parentLayout;
+        private List<TextView> textViews;
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -32,13 +34,6 @@ namespace AndroidApp
 
             parentLayout = FindViewById<LinearLayout>(Resource.Id.parent_layout);
 
-            // LinearLayout ParentBlock = new LinearLayout(this);
-            // ParentBlock.Orientation = Orientation.Vertical;
-            // ParentBlock.LayoutParameters = new ViewGroup.LayoutParams(
-            //    ViewGroup.LayoutParams.MatchParent,
-            //    ViewGroup.LayoutParams.MatchParent);
-            //elements.SetBlockWidth(ParentBlock, 300, 300);
-            //Заполнение элементами
             AddElementsToParentLayout();
 
         }
@@ -49,6 +44,14 @@ namespace AndroidApp
             Button mButton = createButton.OnCreate("Click", 0, 0);
             Button mButton2 = createButton.OnCreate("Click", 0, 0);
             LinearLayout.LayoutParams buttonParams = new LinearLayout.LayoutParams(
+                 ViewGroup.LayoutParams.MatchParent,
+                 ViewGroup.LayoutParams.WrapContent);
+            buttonParams.SetMargins(0, 50, 0, 0);
+            mButton.LayoutParameters = buttonParams;
+            CreateButton createButton2 = new CreateButton(this);
+            Button ButtonForBBlock = createButton.OnCreate("Click", 0, 0);
+            Button ButtonForBBlock2 = createButton.OnCreate("Click", 0, 0);
+            LinearLayout.LayoutParams ButtonParams = new LinearLayout.LayoutParams(
                  ViewGroup.LayoutParams.MatchParent,
                  ViewGroup.LayoutParams.WrapContent);
             buttonParams.SetMargins(0, 50, 0, 0);
@@ -66,6 +69,31 @@ namespace AndroidApp
             LinearLayout block7 = elements.AddLabelAndImageToBlock("Title", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Description", null, true);
             LinearLayout block8 = elements.AddLabelAndImageToBlock("Title", Resource.Drawable.starblue, "#e8e9eb", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Description", null, true);
             LinearLayout block9 = elements.AddLabelAndImageToBlock("Title", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Description", null, true);
+            LinearLayout block10 = elements.AddAnyElementsToBlock(Resource.Drawable.starblue, "Title", "Description",
+                Resource.Drawable.starblue, "Title", "Description",
+                Resource.Drawable.starblue, "Title", "Description",
+                Resource.Drawable.starblue, "Title", "Description",
+                "#FFFFFF" ,Typeface.CreateFromAsset(Assets, "Roboto.ttf"), true, ButtonForBBlock);
+            elements.ChangeBlockWidth(block10, 900, 800);
+            LinearLayout block11 = elements.AddAnyElementsToBlock(Resource.Drawable.starblue, "Title", "Description",
+                Resource.Drawable.starblue, "Title", "Description",
+                Resource.Drawable.starblue, "Title", "Description",
+                Resource.Drawable.starblue, "Title", "Description",
+                "#e8e9eb", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), true, ButtonForBBlock2);
+            elements.ChangeBlockWidth(block11, 900, 800);
+            LinearLayout block12 = elements.AddAnyElementsToBlock(Resource.Drawable.starblue, "Title", "Description",
+                Resource.Drawable.starblue, "Title", "Description",
+                Resource.Drawable.starblue, "Title", "Description",
+                Resource.Drawable.starblue, "Title", "Description",
+                "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), true, null);
+            elements.ChangeBlockWidth(block12, 900, 600);
+            LinearLayout block13 = elements.AddAnyElementsToBlock(Resource.Drawable.starblue, "Title", "Description",
+                Resource.Drawable.starblue, "Title", "Description",
+                Resource.Drawable.starblue, "Title", "Description",
+                Resource.Drawable.starblue, "Title", "Description",
+                "#e8e9eb", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), true, null);
+            elements.ChangeBlockWidth(block13, 900, 600);
+
 
 
             // Добавляем блоки в parentLayout
@@ -78,7 +106,12 @@ namespace AndroidApp
             parentLayout.AddView(block7);
             parentLayout.AddView(block8);
             parentLayout.AddView(block9);
+            parentLayout.AddView(block10);
+            parentLayout.AddView(block11);
+            parentLayout.AddView(block12);
+            parentLayout.AddView(block13);
         }
+
 
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
