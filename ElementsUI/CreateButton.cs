@@ -23,7 +23,7 @@ namespace ElementsUI
 
         public Button OnCreate(string buttonText, int width, int height)
         {
-            Button button = new Button(mContext);
+            var button = new Button(mContext);
             button.Text = buttonText;
             button.SetTextColor(Color.ParseColor("#428BF9"));
             button.SetBackgroundColor(Color.ParseColor("#dedede"));
