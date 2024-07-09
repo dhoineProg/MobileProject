@@ -21,15 +21,16 @@ namespace ElementsUI
         Context _context;
         Activity act;
         List<LinearLayout> blocks;
-        CreateElements CreateElements;
-        EditElements EditElements;
+        
         public Elements(Context context)
         {
             _context = context;
             blocks = new List<LinearLayout>();
         }
-        public LinearLayout AddLabelAndImageToBlock(string headerText, int imageResourceId, string newColor, Typeface tf, string subheaderText = null, Button button = null, bool imageOnLeft = true)
+        public LinearLayout AddLabelAndImageToBlock(LinearLayout block, string headerText, int imageResourceId, string newColor, Typeface tf, string subheaderText = null, Button button = null, bool imageOnLeft = true)
         {
+            CreateElements CreateElements = new CreateElements(_context);
+            EditElements EditElements = new EditElements(_context);
             // Создаем горизонтальный LinearLayout
             var horizontalLayout = new LinearLayout(_context);
             horizontalLayout.Orientation = Orientation.Horizontal;
@@ -78,32 +79,46 @@ namespace ElementsUI
                 horizontalLayout.AddView(imageView);
             }
             // Создаем новый вертикальный LinearLayout для блока
-            LinearLayout newBlock = CreateElements.CreateBlock(60, 82, 40); // Задаем отступы для блока
-            newBlock.AddView(horizontalLayout);
+            EditElements.SetMarginBlock(block, 60, 82, 40); // Задаем отступы для блока
+            block.AddView(horizontalLayout);
+
             if (button != null)
             {
+                // Сначала проверяем, есть ли у button родительский элемент
+                ViewGroup buttonParent = (ViewGroup)button.Parent;
+                if (buttonParent != null)
+                {
+                    // Если есть, удаляем button из его родительского элемента
+                    buttonParent.RemoveView(button);
+                }
+
+                // Теперь можно добавить button в block
                 button.LayoutParameters = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MatchParent,
                     ViewGroup.LayoutParams.WrapContent);
-                newBlock.AddView(button);
+                block.AddView(button);
             }
             else
             {
                 button = null;
             }
+
             GradientDrawable background = new GradientDrawable();
             background.SetCornerRadius(26f);
             background.SetColor(Color.ParseColor(newColor));
-            newBlock.SetBackgroundDrawable(background);
+            block.SetBackgroundDrawable(background);
+
             // Добавляем новый блок в родительский LinearLayout
-            blocks.Add(newBlock);
-            return newBlock;
+            blocks.Add(block);
+            return block;
         }
-        public LinearLayout AddAnyElementsToBlock(int imageResourceId1, string headerText1, string subheaderText1,
+        public LinearLayout AddAnyElementsToBlock(LinearLayout block, int imageResourceId1, string headerText1, string subheaderText1,
                                                   string newColor, Typeface tf, bool imageOnLeft = true, Button button = null)
         {
+            CreateElements CreateElements = new CreateElements(_context);
+            EditElements EditElements = new EditElements(_context);
             // Создаем горизонтальный LinearLayout
-            LinearLayout horizontalLayout = new LinearLayout(_context);
+            var horizontalLayout = new LinearLayout(_context);
             horizontalLayout.Orientation = Orientation.Horizontal;
             horizontalLayout.LayoutParameters = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MatchParent,
@@ -149,19 +164,17 @@ namespace ElementsUI
             {
                 horizontalLayout.AddView(verticalLayout);
                 horizontalLayout.AddView(imageView1);
-
             }
-
             // Создаем новый вертикальный LinearLayout для блока
-            var newBlock = CreateElements.CreateBlock(60, 82, 40); // Задаем отступы для блока
-            newBlock.AddView(horizontalLayout);
+            EditElements.SetMarginBlock(block, 60, 82, 40); // Задаем отступы для блока
+            block.AddView(horizontalLayout);
             var background = new GradientDrawable();
             background.SetCornerRadius(26f);
             background.SetColor(Color.ParseColor(newColor));
-            newBlock.SetBackgroundDrawable(background);
+            block.SetBackgroundDrawable(background);
             // Добавляем новый блок в родительский LinearLayout
-            blocks.Add(newBlock);
-            return newBlock;
+            blocks.Add(block);
+            return block;
         }
         public void DisplayBlocks(ViewGroup parentLayout)
         {

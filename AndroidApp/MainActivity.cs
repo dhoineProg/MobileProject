@@ -18,12 +18,8 @@ namespace AndroidApp
     [Activity(Label = "Scroll View Events", MainLauncher = true)]
     public class MainActivity : Activity
     {
-        Elements elements;
-        EditElements editelements;
         LinearLayout parentLayout;
-        CreateButton createButton;
         List<TextView> textViews;
-        List<LinearLayout> blocks;
         protected override void OnCreate(Bundle savedInstanceState)
         {
             var elements = new Elements(this);
@@ -35,6 +31,11 @@ namespace AndroidApp
         }
         private void AddElementsToParentLayout()
         {
+            var blocks = new List<LinearLayout>();
+            var createElements = new CreateElements(this);
+            var elements = new Elements(this);
+            var editelements = new EditElements(this);
+            var createButton = new CreateButton(this);
             // Создание и добавление элементов в parentLayout
             createButton = new CreateButton(this);
             var mButton = createButton.OnCreate("Click", 0, 0);
@@ -46,28 +47,51 @@ namespace AndroidApp
                  ViewGroup.LayoutParams.WrapContent);
             buttonParams.SetMargins(0, 50, 0, 0);
             mButton.LayoutParameters = buttonParams;
-            // Добавляем блоки с кнопками
-            var block1 = elements.AddLabelAndImageToBlock("Header", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Subheader", null, false);
-            var block2 = elements.AddLabelAndImageToBlock("Header", Resource.Drawable.starblue, "#e8e9eb", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Subheader", null, false);
-            var block3 = elements.AddLabelAndImageToBlock("Header", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), null, null, false);
-            var block4 = elements.AddLabelAndImageToBlock("Header", Resource.Drawable.starblue, "#e8e9eb", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), null, null, false);
-            var block5 = elements.AddLabelAndImageToBlock("Header", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Subheader", mButton, false);
-            //editelements.ChangeBlockWidth(block5, 900, 400);
-            var block6 = elements.AddLabelAndImageToBlock("Header", Resource.Drawable.starblue, "#e8e9eb", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Subheader", mButton2, false);
-            //editelements.ChangeBlockWidth(block6, 900, 400);
-            var block7 = elements.AddLabelAndImageToBlock("Title", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Description", null, true);
-            var block8 = elements.AddLabelAndImageToBlock("Title", Resource.Drawable.starblue, "#e8e9eb", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Description", null, true);
-            var block9 = elements.AddLabelAndImageToBlock("Title", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Description", null, true);
-            // Добавляем блоки в parentLayout
-            parentLayout.AddView(block1);
-            parentLayout.AddView(block2);
-            parentLayout.AddView(block3);
-            parentLayout.AddView(block4);
-            parentLayout.AddView(block5);
-            parentLayout.AddView(block6);
-            parentLayout.AddView(block7);
-            parentLayout.AddView(block8);
-            parentLayout.AddView(block9);
+            // Добавляем блоки
+            var block1 = createElements.CreateBlock(900,220);
+            elements.AddLabelAndImageToBlock(block1,"Header", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Subheader", null, false);
+            blocks.Add(block1);
+            var block2 = createElements.CreateBlock(900, 220);
+            elements.AddLabelAndImageToBlock(block2,"Header", Resource.Drawable.starblue, "#e8e9eb", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Subheader", null, false);
+            blocks.Add(block2);
+            var block3 = createElements.CreateBlock(900, 220);
+            elements.AddLabelAndImageToBlock(block3,"Header", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), null, null, false);
+            blocks.Add(block3);
+            var block4 = createElements.CreateBlock(900, 220);
+            elements.AddLabelAndImageToBlock(block4,"Header", Resource.Drawable.starblue, "#e8e9eb", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), null, null, false);
+            blocks.Add(block4);
+            var block5 = createElements.CreateBlock(900, 400);
+            elements.AddLabelAndImageToBlock(block5,"Header", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Subheader", mButton, false);
+            blocks.Add(block5);
+            var block6 = createElements.CreateBlock(900, 400);
+            elements.AddLabelAndImageToBlock(block6,"Header", Resource.Drawable.starblue, "#e8e9eb", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Subheader", mButton2, false);
+            blocks.Add(block6);
+            var block7 = createElements.CreateBlock(900, 220);
+            elements.AddLabelAndImageToBlock(block7,"Title", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Description", null, true);
+            blocks.Add(block7);
+            var block8 = createElements.CreateBlock(900, 220);
+            elements.AddLabelAndImageToBlock(block8,"Title", Resource.Drawable.starblue, "#e8e9eb", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Description", null, true);
+            blocks.Add(block8);
+            var block9 = createElements.CreateBlock(900, 220);
+            elements.AddLabelAndImageToBlock(block9,"Title", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Description", null, true);
+            blocks.Add(block9);
+            var block10 = createElements.CreateBlock(900, 620);
+            var block11 = createElements.CreateBlock(900, 620);
+            int count = 4;
+            for (int i = 0; i < count; i++)
+            {
+                elements.AddLabelAndImageToBlock(block10, "Title", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Description", ButtonForBBlock, true);
+                elements.AddLabelAndImageToBlock(block11, "Title", Resource.Drawable.starblue, "#e8e9eb", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), "Description", ButtonForBBlock2, true);
+            }  
+            blocks.Add(block10);
+            blocks.Add(block11);
+
+
+            foreach (var block in blocks)
+            {
+                editelements.SetMarginBlock(block, 90, 90, 15);
+                parentLayout.AddView(block);
+            }
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {

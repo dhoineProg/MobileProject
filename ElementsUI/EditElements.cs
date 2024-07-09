@@ -28,6 +28,17 @@ namespace ElementsUI
             layoutParams.Height = height;
             block.LayoutParameters = layoutParams;
         }
+        public void SetMarginBlock(LinearLayout block, int topMargin, int bottomMargin, int leftMargin)
+        {
+            block.LayoutParameters = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MatchParent,
+                ViewGroup.LayoutParams.WrapContent)
+            {
+                TopMargin = topMargin,
+                BottomMargin = bottomMargin,
+                LeftMargin = leftMargin
+            };
+        }
         public void ChangeBlockWidth(LinearLayout block, int width, int height)
         {
             LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams)block.LayoutParameters;
