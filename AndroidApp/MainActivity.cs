@@ -16,7 +16,7 @@ namespace AndroidApp
     
     //[Activity(Label = "@string/app_name", Theme = "@style/AppTheme", MainLauncher = true)]
     [Activity(Label = "Scroll View Events", MainLauncher = true)]
-    public class MainActivity : AppCompatActivity
+    public class MainActivity : Activity
     {
         Elements elements;
         private LinearLayout parentLayout;
