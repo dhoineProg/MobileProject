@@ -1,16 +1,7 @@
-﻿using Android;
-using Android.App;
-using Android.Graphics;
-using Android.OS;
+﻿using Android.Graphics;
 using Android.Runtime;
 using Android.Views;
-using Android.Widget;
-using AndroidX.AppCompat.App;
-using System;
-using System.Security.Cryptography.X509Certificates;
-using Xamarin.Essentials;
 using ElementsUI;
-using AndroidX.Core.Widget;
 
 namespace AndroidApp
 {
