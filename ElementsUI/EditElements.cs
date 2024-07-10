@@ -15,12 +15,12 @@ namespace ElementsUI
         }
         public void SetBlockWidth(LinearLayout block, int width, int height)
         {
-            LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams)block.LayoutParameters;
-            layoutParams.Width = width;
-            layoutParams.Height = height;
-            block.LayoutParameters = layoutParams;
+            LinearLayout.LayoutParams linParams = new LinearLayout.LayoutParams(
+                width, height
+                );
+            block.LayoutParameters = linParams;
         }
-        public void SetMarginBlock(LinearLayout block, int topMargin, int bottomMargin, int leftMargin)
+        public void SetMarginBlock(LinearLayout block, int topMargin, int bottomMargin, int leftMargin, int rightMargin)
         {
             block.LayoutParameters = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MatchParent,
@@ -28,7 +28,8 @@ namespace ElementsUI
             {
                 TopMargin = topMargin,
                 BottomMargin = bottomMargin,
-                LeftMargin = leftMargin
+                LeftMargin = leftMargin,
+                RightMargin = rightMargin
             };
         }
         public void ChangeBlockWidth(LinearLayout block, int width, int height)

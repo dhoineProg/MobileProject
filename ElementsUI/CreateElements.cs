@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.IO;
 using Android.App;
 using ElementsUI;
+using Android.Hardware.Lights;
+using static Android.Icu.Text.ListFormatter;
 
 namespace ElementsUI
 {
@@ -28,21 +30,12 @@ namespace ElementsUI
             textView.Text = text;
             return textView;
         }
-        public LinearLayout CreateBlock(int width, int height)
+        public LinearLayout CreateBlock()
         {
             var block = new LinearLayout(context);
             block.Orientation = Orientation.Vertical;
-            block.SetPadding(16, 16, 16, 16);
-            block.Elevation = 40;
-            GradientDrawable background = new GradientDrawable();
+            block.SetPadding(28, 28, 28, 28);
             // Создаем и инициализируем LayoutParams
-            LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MatchParent,
-                ViewGroup.LayoutParams.MatchParent);
-            layoutParams.Width = width;
-            layoutParams.Height = height;
-            block.LayoutParameters = layoutParams;
-
             return block;
         }
         public ImageView LoadImageFromResources(int resourceId)
