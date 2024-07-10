@@ -6,7 +6,6 @@ using Android.Hardware.Lights;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
-using AndroidX.RecyclerView;
 using ElementsUI;
 using static Android.Icu.Text.ListFormatter;
 
