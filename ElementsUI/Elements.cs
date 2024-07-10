@@ -12,12 +12,13 @@ namespace ElementsUI
         Context _context;
         Activity act;
         List<LinearLayout> blocks;
-        
+      
         public Elements(Context context)
         {
             _context = context;
             blocks = new List<LinearLayout>();
         }
+
         public LinearLayout AddLabelAndImageToBlock(LinearLayout block, string headerText, int imageResourceId, string newColor, Typeface tf, TypefaceStyle tfs, TypefaceStyle tfsn, int textsize, int subtextsize,string subheaderText = null, Button button = null, bool imageOnLeft = true)
         {
             var CreateElements = new CreateElements(_context);
@@ -94,12 +95,10 @@ namespace ElementsUI
             {
                 button = null;
             }
-
             GradientDrawable background = new GradientDrawable();
             background.SetCornerRadius(64f);
             background.SetColor(Color.ParseColor(newColor));
             block.SetBackgroundDrawable(background);
-
             // Добавляем новый блок в родительский LinearLayout
             blocks.Add(block);
             return block;
@@ -139,33 +138,6 @@ namespace ElementsUI
             blocks.Add(block);
             return block;
         }
-
-       /* public LinearLayout AddBlocks(LinearLayout block,int imgID, string title, string subtitle, Typeface tf)
-        {
-            var createElements = new CreateElements(_context);
-            var editElements = new EditElements(_context);
-            //Создаем горизонтальный layout
-
-            //Создаем вертикальный layout 
-            var verticalLayout = new LinearLayout(_context);
-            verticalLayout.Orientation = Orientation.Vertical;
-            verticalLayout.LayoutParameters = new LinearLayout.LayoutParams(
-                0,
-                ViewGroup.LayoutParams.WrapContent,
-                1.0f);
-            verticalLayout.SetGravity(GravityFlags.Start);
-            //Создаем title
-            var Title = new TextView(_context);
-            Title.Text = title;
-            Title.SetTextColor(Color.ParseColor("#333333"));
-            Title.SetTypeface(tf, TypefaceStyle.Bold);
-            Title.SetTextSize(Android.Util.ComplexUnitType.Sp, 22f);
-            verticalLayout.AddView(Title);
-            block.AddView(verticalLayout);
-            blocks.Add(block);
-            return block;
-        }*/
-
 
         public void DisplayBlocks(ViewGroup parentLayout)
         {
