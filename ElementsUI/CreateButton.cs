@@ -12,12 +12,13 @@ namespace ElementsUI
             this.mContext = context;
         }
 
-        public Button OnCreate(string buttonText, int width, int height, int leftMargin, int bottomMargin,float gdr)
+        public Button OnCreate(string buttonText, int width, int height, int leftMargin, int righMargin,float gdr)
         {
             LinearLayout.LayoutParams linParams = new LinearLayout.LayoutParams(
                 width,height
                 );
             linParams.LeftMargin = leftMargin;
+            linParams.RightMargin = righMargin;
             var button = new Button(mContext);
             button.LayoutParameters = linParams;
             button.Text = buttonText;

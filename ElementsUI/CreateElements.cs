@@ -33,6 +33,9 @@ namespace ElementsUI
         public LinearLayout CreateBlock()
         {
             var block = new LinearLayout(context);
+            block.LayoutParameters = new LinearLayout.LayoutParams(
+            ViewGroup.LayoutParams.MatchParent,
+            ViewGroup.LayoutParams.WrapContent);
             block.Orientation = Orientation.Vertical;
             block.SetPadding(28, 28, 28, 28);
             // Создаем и инициализируем LayoutParams

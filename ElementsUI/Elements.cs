@@ -19,7 +19,7 @@ namespace ElementsUI
             blocks = new List<LinearLayout>();
         }
 
-        public LinearLayout AddLabelAndImageToBlock(LinearLayout block, string headerText, int imageResourceId, string newColor, Typeface tf, TypefaceStyle tfs, TypefaceStyle tfsn, int textsize, int subtextsize,string subheaderText = null, Button button = null, bool imageOnLeft = true)
+        public LinearLayout AddLabelAndImageToBlock(LinearLayout block, string headerText, int imageResourceId, string newColor, Typeface tf, Typeface tfs, TypefaceStyle tfsn, int textsize, int subtextsize,string subheaderText = null, Button button = null, bool imageOnLeft = true)
         {
             var CreateElements = new CreateElements(_context);
             var EditElements = new EditElements(_context);
@@ -42,9 +42,10 @@ namespace ElementsUI
             var headerTextView = new TextView(_context);
             headerTextView.Text = headerText;
             headerTextView.SetTextColor(Color.ParseColor("#333333"));
-            headerTextView.SetTypeface(tf, tfs);
+            headerTextView.SetTypeface(tf, TypefaceStyle.Bold);
             headerTextView.SetTextSize(Android.Util.ComplexUnitType.Sp, textsize);
-            headerTextView.SetPadding(15,35,15,25);
+            headerTextView.SetPadding(15,35,15,15);
+            
             // Создаем TextView для субзаголовка
             var subheaderTextView = new TextView(_context);
             subheaderTextView.Text = subheaderText;
@@ -74,7 +75,6 @@ namespace ElementsUI
                 horizontalLayout.AddView(imageView);
             }
             // Создаем новый вертикальный LinearLayout для блока
-            EditElements.SetMarginBlock(block, 60, 82, 30,0); // Задаем отступы для блока
             block.AddView(horizontalLayout);
             block.Elevation = 2;
 
@@ -104,7 +104,7 @@ namespace ElementsUI
             return block;
         }
 
-        public LinearLayout AddToBlock(LinearLayout block,string title = null, Typeface tf = null, Button btn = null)
+        public LinearLayout AddToBlock(LinearLayout block, Button btn,string title = null, Typeface tf = null)
         {
             var createElements = new CreateElements(_context);
             var editElements = new EditElements(_context);
@@ -115,13 +115,21 @@ namespace ElementsUI
                 ViewGroup.LayoutParams.MatchParent,
                 ViewGroup.LayoutParams.WrapContent);
             //Создаем вертикальный layout 
-            var verticalLayout = new LinearLayout(_context);
-            verticalLayout.Orientation = Orientation.Vertical;
-            verticalLayout.LayoutParameters = new LinearLayout.LayoutParams(
+            var verticalLayoutleft = new LinearLayout(_context);
+            verticalLayoutleft.Orientation = Orientation.Vertical;
+            verticalLayoutleft.LayoutParameters = new LinearLayout.LayoutParams(
                 0,
                 ViewGroup.LayoutParams.WrapContent,
                 1.0f);
-            verticalLayout.SetGravity(GravityFlags.Start);
+            verticalLayoutleft.SetGravity(GravityFlags.Left);
+            var verticalLayoutright = new LinearLayout(_context);
+            verticalLayoutright.Orientation = Orientation.Vertical;
+            verticalLayoutright.LayoutParameters = new LinearLayout.LayoutParams(
+                0,
+                ViewGroup.LayoutParams.WrapContent,
+                1.0f);
+            verticalLayoutright.SetGravity(GravityFlags.Right);
+            verticalLayoutright.AddView(btn);
             //Создаем title
             var Title = new TextView(_context);
             Title.Text = title;
@@ -129,8 +137,9 @@ namespace ElementsUI
             Title.SetTypeface(tf, TypefaceStyle.Bold);
             Title.SetTextSize(Android.Util.ComplexUnitType.Sp, 22f);
             Title.SetPadding(15, 15, 15, 40);
-            verticalLayout.AddView(Title);
-            horizontalLayout.AddView(verticalLayout);
+            verticalLayoutleft.AddView(Title);
+            horizontalLayout.AddView(verticalLayoutleft);
+            horizontalLayout.AddView(verticalLayoutright);
             GradientDrawable background = new GradientDrawable();
             background.SetCornerRadius(52f);
             block.SetBackgroundDrawable(background);
