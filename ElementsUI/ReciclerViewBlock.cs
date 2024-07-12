@@ -33,10 +33,8 @@ namespace ElementsUI
            };
             var recyclerView = new RecyclerView(context);
             recyclerView.SetLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.Horizontal, false));
-            var adapter = new MyAdapter(items);
-            
+            var adapter = new MyAdapter(items,imgID);        
             recyclerView.SetAdapter(adapter);
-
             var middleBlock = new LinearLayout(context);
             var editElements = new EditElements(context);
             var upperBlockView = new LinearLayout(context);
@@ -98,7 +96,6 @@ namespace ElementsUI
             gdBlock.SetCornerRadius(64f);
             gdBlock.SetColor(Color.ParseColor("#FFFFFF"));
             block.SetBackgroundDrawable(gdBlock);
-
             return block;
         }
     }

@@ -15,10 +15,13 @@ namespace ElementsUI
         }
         public void SetBlockWidth(LinearLayout block, int width, int height)
         {
-            LinearLayout.LayoutParams linParams = new LinearLayout.LayoutParams(
+            block.LayoutParameters = new LinearLayout.LayoutParams(
                 width, height
-                );
-            block.LayoutParameters = linParams;
+                )
+            {
+                Width = width,
+                Height = height
+            };
         }
         public void SetMarginBlock(LinearLayout block, int topMargin, int bottomMargin, int leftMargin, int rightMargin)
         {

@@ -98,6 +98,11 @@ namespace ElementsUI
             GradientDrawable background = new GradientDrawable();
             background.SetCornerRadius(64f);
             background.SetColor(Color.ParseColor(newColor));
+            if (subheaderText == null)
+            {
+                headerTextView.SetPadding(10, 80, 60, 0);
+                EditElements.SetBlockWidth(block, ViewGroup.LayoutParams.MatchParent, 200);
+            }
             block.SetBackgroundDrawable(background);
             // Добавляем новый блок в родительский LinearLayout
             blocks.Add(block);
@@ -142,6 +147,7 @@ namespace ElementsUI
             horizontalLayout.AddView(verticalLayoutright);
             GradientDrawable background = new GradientDrawable();
             background.SetCornerRadius(52f);
+
             block.SetBackgroundDrawable(background);
             block.AddView(horizontalLayout);
             blocks.Add(block);

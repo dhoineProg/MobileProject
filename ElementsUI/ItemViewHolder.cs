@@ -6,10 +6,11 @@ using Android.Support.V4;
 using AndroidX.CardView;
 using ElementsUI;
 using Android.Widget;
+using AndroidX.RecyclerView.Widget;
 
 namespace ElementsUI
 {
-    public class ItemViewHolder : AndroidX.RecyclerView.Widget.RecyclerView.ViewHolder
+    public class ItemViewHolder : RecyclerView.ViewHolder
     {
         public ImageView _imageView;
         public TextView _titleTextView;
@@ -26,7 +27,6 @@ namespace ElementsUI
         public void Bind(Items item)
         {
             _imageView.SetImageBitmap(BitmapFactory.DecodeResource(ItemView.Resources, Resource.Drawable.abc_star_black_48dp));
-
             _titleTextView.Text = item.Title;
             _subtitleTextView.Text = item.Subtitle;
         }

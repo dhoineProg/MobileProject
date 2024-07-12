@@ -11,6 +11,7 @@ namespace ElementsUI
     public class ItemView : LinearLayout
     {
         readonly TextView _textView;
+        readonly ImageView _imageView;
 
         public ItemView(Context context) : base(context)
         {
@@ -20,12 +21,9 @@ namespace ElementsUI
                 ViewGroup.LayoutParams.WrapContent);
 
             _textView = new TextView(context);
+            _imageView = new ImageView(context);
             AddView(_textView);
-        }
-
-        public void SetText(string text)
-        {
-            _textView.Text = text;
+            AddView(_imageView);
         }
     }
 }
