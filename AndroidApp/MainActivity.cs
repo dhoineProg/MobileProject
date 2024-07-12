@@ -43,7 +43,8 @@ namespace AndroidApp
             mButton.Click += MyButton_Click;
             var mButton2 = createButton.OnCreate("Button", ViewGroup.LayoutParams.MatchParent, 120, 15, 15, 24f);
             mButton2.Click += MyButton_Click;
-            var cross = createButton.OnCreate("Button", 60, 60, 850,500, 60f);
+            var cross = createButton.OnCreate("", 60, 60, 850,500, 60f);
+            cross.LayoutParameters = new LinearLayout.LayoutParams(60, 60);
             cross.SetBackgroundColor(Color.ParseColor("#edeef0"));
             cross.SetBackgroundResource(Resource.Drawable.cross);
             var ButtonForBBlock = createButton.OnCreate("Button", ViewGroup.LayoutParams.MatchParent, 120, 15, 15, 24f);
@@ -92,34 +93,34 @@ namespace AndroidApp
             blocks.Add(block1);
             var block2 = createElements.CreateBlock();
             elements.AddLabelAndImageToBlock(block2,"Header",
-                Resource.Drawable.starblue, "#edeef0", Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 20, 13, "Subheader", null, false);
+                Resource.Drawable.starblue, "#edeef0", Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 22, 14, "Subheader", null, false);
             blocks.Add(block2);
             var block3 = createElements.CreateBlock();
             elements.AddLabelAndImageToBlock(block3,"Header",
-                Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 20, 13, null, null, false);
+                Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 22, 14, null, null, false);
             blocks.Add(block3);
             var block4 = createElements.CreateBlock();
             elements.AddLabelAndImageToBlock(block4,"Header",
-                Resource.Drawable.starblue, "#edeef0", Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 20, 13, null, null, false);
+                Resource.Drawable.starblue, "#edeef0", Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 22, 14, null, null, false);
             blocks.Add(block4);
             var block5 = createElements.CreateBlock();
             elements.AddLabelAndImageToBlock(block5,"Header",
-                Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 20, 13, "Subheader", mButton, false);
+                Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 22, 14, "Subheader", mButton, false);
             blocks.Add(block5);
             var block6 = createElements.CreateBlock();
             elements.AddLabelAndImageToBlock(block6,"Header",
-                Resource.Drawable.starblue, "#edeef0", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 16, 13, "Subheader", mButton2, false);
+                Resource.Drawable.starblue, "#edeef0", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 22, 14, "Subheader", mButton2, false);
             blocks.Add(block6);
             var block7 = createElements.CreateBlock();
             elements.AddLabelAndImageToBlock(block7,"Title",
-                Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 16, 13, "Description", null, true);
+                Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 22, 14, "Description", null, true);
             blocks.Add(block7);
             var block8 = createElements.CreateBlock();
             elements.AddLabelAndImageToBlock(block8,"Title",
-                Resource.Drawable.starblue, "#edeef0", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 16, 13, "Description", null, true);
+                Resource.Drawable.starblue, "#edeef0", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 22, 14, "Description", null, true);
             blocks.Add(block8);
             var block9 = createElements.CreateBlock();
-            addBlock.AddBlock(block9, "Title", "Subtitle", Resource.Drawable.starblue, cross, Typeface.CreateFromAsset(Assets,"Roboto.ttf"));
+            addBlock.AddBlock(block9, "Title", "Description", Resource.Drawable.starblue, cross, Typeface.CreateFromAsset(Assets,"Roboto.ttf"));
             blocks.Add(block9);
             var block10 = createElements.CreateBlock();
             elements.AddToBlock(block10, buttonUp, "Header", Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"));
