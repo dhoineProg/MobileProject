@@ -8,14 +8,14 @@ using ElementsUI;
 
 namespace ElementsUI
 {
-    public class ItemView : LinearLayout
+    public class ItemViewVertical : LinearLayout
     {
         readonly TextView _textView;
         readonly ImageView _imageView;
 
-        public ItemView(Context context) : base(context)
+        public ItemViewVertical(Context context) : base(context)
         {
-            Orientation = Orientation.Horizontal;
+            Orientation = Orientation.Vertical;
             LayoutParameters = new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.WrapContent,
                 ViewGroup.LayoutParams.WrapContent);

@@ -37,6 +37,7 @@ namespace AndroidApp
             var editelements = new EditElements(this);
             var createButton = new CreateButton(this);
             var reciclerViewBlock = new ReciclerViewBlock(this);
+            var verticalRecicler = new VerticalReciclerBlock(this);
             var addBlock = new AddBlockWithCross(this);
             // Создание и добавление элементов в parentLayout
             var mButton = createButton.OnCreate("Button",ViewGroup.LayoutParams.MatchParent,
@@ -141,35 +142,14 @@ namespace AndroidApp
                 Typeface.CreateFromAsset(Assets,"Roboto.ttf"));
             blocks.Add(block9);
             var block10 = createElements.CreateBlock();
-            elements.AddToBlock(block10, buttonUp, "Header", 
-                Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"));
-            var block11 = createElements.CreateBlock();
-            elements.AddToBlock(block11, buttonUp2, "Header",
-                Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"));
-            var block12 = createElements.CreateBlock();
-            elements.AddToBlock(block12, buttonUp3, "Header",
-                Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"));
-            var block13 = createElements.CreateBlock();
-            elements.AddToBlock(block13, buttonUp4, "Header",
-                Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"));
-            int count = 4;
-            for (int i = 0; i < count; i++)
-            {
-                elements.AddLabelAndImageToBlock(block10, "Title", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 18, 13, "Description", ButtonForBBlock, true);
-                elements.AddLabelAndImageToBlock(block11, "Title", Resource.Drawable.starblue, "#edeef0", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 18, 13, "Description", ButtonForBBlock2, true);
-                elements.AddLabelAndImageToBlock(block12, "Title", Resource.Drawable.starblue, "#FFFFFF", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 18, 13, "Description", null, true);
-                elements.AddLabelAndImageToBlock(block13, "Title", Resource.Drawable.starblue, "#edeef0", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.DefaultBold, TypefaceStyle.Normal, 18, 13, "Description", null, true);       
-            }             
+            verticalRecicler.AddElements(block10, "Header", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"), Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Resource.Drawable.starblue);
             blocks.Add(block10);
+            var block11 = createElements.CreateBlock();
+            reciclerViewBlock.AddElements(block11, "Header", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Resource.Drawable.starblue);
             blocks.Add(block11);
-            blocks.Add(block12);
-            blocks.Add(block13);
-            var block14 = createElements.CreateBlock();
-            reciclerViewBlock.AddElements(block14, "Header", Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"), Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Resource.Drawable.starblue);
-            blocks.Add(block14);     
             var buttonLayout = createElements.CreateBlock();
             buttonLayout.Orientation = Orientation.Horizontal;
-            LinearLayout.LayoutParams par = new LinearLayout.LayoutParams(100, 100);
+            var par = new LinearLayout.LayoutParams(100, 100);
             buttonLayout.LayoutParameters = par;
             buttonLayout.AddView(ButtonBottom);
             blocks.Add(buttonLayout); 
