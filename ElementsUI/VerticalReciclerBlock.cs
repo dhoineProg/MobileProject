@@ -15,27 +15,13 @@ namespace ElementsUI
         {
             this.context = context;
         }
-        public LinearLayout AddElements(LinearLayout block, string header, Typeface tf, Typeface tfHeader, Typeface tfn, int imgID)
+        public LinearLayout AddElements(LinearLayout block, string header, Typeface tf, Typeface tfHeader, Typeface tfn, int imgID, int count)
         {
-            var items = new List<Items>
-           {
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-               new Items { Img = imgID, Title = "Title", Subtitle = "Description" },
-           };
+            var items = new List<Items>();
+            for (int i = 0; i < count; i++)
+            {             
+                items.Add(new Items { Img = imgID, Title = "Title", Subtitle = "Description" });
+            }
             var recyclerView = new RecyclerView(context);
             recyclerView.SetLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.Vertical, false));
             var adapter = new VerticalAdapter(items, imgID, tf);

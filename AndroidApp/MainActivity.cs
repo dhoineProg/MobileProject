@@ -7,6 +7,8 @@ using ElementsUI;
 using Android.Content;
 using AndroidX.RecyclerView.Widget;
 using Android.Transitions;
+using Android.Webkit;
+using Xamarin.Essentials;
 
 namespace AndroidApp
 {
@@ -62,30 +64,7 @@ namespace AndroidApp
             var gd2 = new GradientDrawable();
             buttonUp.SetTextColor(Color.ParseColor("#428BF9"));
             gd.SetColor(Color.ParseColor("#FFFFFF"));
-            buttonUp.SetBackgroundDrawable(gd);
-            buttonUp.SetTypeface(Typeface.CreateFromAsset(Assets, "Roboto.ttf"), TypefaceStyle.Bold);
-            var buttonUp2 = new Button(this);
-            buttonUp2.Text = "Button";
-            buttonUp2.TextSize = 14;
-            buttonUp2.SetPadding(300, 20, 0, 20);
-            buttonUp2.SetTextColor(Color.ParseColor("#428BF9"));
-            gd2.SetColor(Color.ParseColor("#edeef0"));
-            buttonUp2.SetBackgroundDrawable(gd2);
-            buttonUp2.SetTypeface(Typeface.CreateFromAsset(Assets, "Roboto.ttf"), TypefaceStyle.Bold);
-            var buttonUp3 = new Button(this);
-            buttonUp3.Text = "Button";
-            buttonUp3.TextSize = 14;
-            buttonUp3.SetPadding(300, 20, 0, 20);
-            buttonUp3.SetTextColor(Color.ParseColor("#428BF9"));
-            buttonUp3.SetBackgroundDrawable(gd);
-            buttonUp3.SetTypeface(Typeface.CreateFromAsset(Assets, "Roboto.ttf"), TypefaceStyle.Bold);
-            var buttonUp4 = new Button(this);
-            buttonUp4.Text = "Button";
-            buttonUp4.TextSize = 14;
-            buttonUp4.SetPadding(300, 20, 0, 20);
-            buttonUp4.SetTextColor(Color.ParseColor("#428BF9"));
-            buttonUp4.SetBackgroundDrawable(gd2);
-            buttonUp4.SetTypeface(Typeface.CreateFromAsset(Assets, "Roboto.ttf"), TypefaceStyle.Bold);
+
             // Добавляем блоки
             var block1 = createElements.CreateBlock();
             elements.AddLabelAndImageToBlock(block1,"Header",
@@ -142,7 +121,7 @@ namespace AndroidApp
                 Typeface.CreateFromAsset(Assets,"Roboto.ttf"));
             blocks.Add(block9);
             var block10 = createElements.CreateBlock();
-            verticalRecicler.AddElements(block10, "Header", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"), Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Resource.Drawable.starblue);
+            verticalRecicler.AddElements(block10, "Header", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.CreateFromAsset(Assets, "Roboto-bold.ttf"), Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Resource.Drawable.starblue, 120);
             blocks.Add(block10);
             var block11 = createElements.CreateBlock();
             reciclerViewBlock.AddElements(block11, "Header", Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Typeface.CreateFromAsset(Assets, "Roboto.ttf"), Resource.Drawable.starblue);

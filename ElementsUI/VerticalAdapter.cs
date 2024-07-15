@@ -11,6 +11,7 @@ namespace ElementsUI
         readonly List<Items> items;
         public int imgID;
         public Typeface tf;
+        static int numElement;
 
         public VerticalAdapter(List<Items> items, int imgID, Typeface tf)
         {
@@ -37,8 +38,6 @@ namespace ElementsUI
             var layoutParams = new LinearLayout.LayoutParams(900, 200);
             layoutParams.SetMargins(10, 0, 20, 0);
             view.LayoutParameters = layoutParams;
-            // Добавление тени
-            view.Elevation = 2f;
             view.SetBackgroundDrawable(gd);
             var imageView = new ImageView(parent.Context);
             imageView.LayoutParameters = new LinearLayout.LayoutParams(100, 100);
@@ -62,6 +61,14 @@ namespace ElementsUI
             textLayout.AddView(subtitleTextView);
             view.AddView(imageView);
             view.AddView(textLayout);
+           /* for(int i = 0; i<items.Count; i++)
+                if(i % 4 == 0)
+                {
+                    view.SetBackgroundColor(Color.ParseColor("#000000"));
+                } else
+                {
+                    view.SetBackgroundColor(Color.ParseColor("#ffffff"));
+                }*/
             return new ItemViewHolderVertical(view, imageView, titleTextView, subtitleTextView);
         }
     }
