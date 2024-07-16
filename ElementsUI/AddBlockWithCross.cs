@@ -12,7 +12,7 @@ namespace ElementsUI
         Context context;
         public AddBlockWithCross(Context context) { this.context = context;}
 
-        public LinearLayout AddBlock(LinearLayout block, string title, string subTitle, int imgid, Button button, Typeface tf)
+        public LinearLayout AddBlock(LinearLayout block, string title, string subTitle, int imgid, Button button, Typeface tf, Color color)
         {
             // Создаем горизонтальный LinearLayout
             var horizontalLayout = new LinearLayout(context);
@@ -62,7 +62,7 @@ namespace ElementsUI
 
             GradientDrawable background = new GradientDrawable();
             background.SetCornerRadius(64f);
-            background.SetColor(Color.ParseColor("#FFFFFF"));
+            background.SetColor(color);
             block.SetBackgroundDrawable(background);
             // Добавляем новый блок в родительский LinearLayout
             return block;

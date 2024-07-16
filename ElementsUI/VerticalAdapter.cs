@@ -61,14 +61,6 @@ namespace ElementsUI
             textLayout.AddView(subtitleTextView);
             view.AddView(imageView);
             view.AddView(textLayout);
-           /* for(int i = 0; i<items.Count; i++)
-                if(i % 4 == 0)
-                {
-                    view.SetBackgroundColor(Color.ParseColor("#000000"));
-                } else
-                {
-                    view.SetBackgroundColor(Color.ParseColor("#ffffff"));
-                }*/
             return new ItemViewHolderVertical(view, imageView, titleTextView, subtitleTextView);
         }
     }

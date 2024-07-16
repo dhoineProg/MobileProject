@@ -15,7 +15,7 @@ namespace ElementsUI
         {
             this.context = context;
         }
-        public LinearLayout AddElements(LinearLayout block, string header, Typeface tf, Typeface tfHeader, Typeface tfn, int imgID, int count)
+        public LinearLayout AddElements(LinearLayout block, string header, Typeface tf, Typeface tfHeader, Typeface tfn, int imgID, int count,  Color color)
         {
             var items = new List<Items>();
             for (int i = 0; i < count; i++)
@@ -66,7 +66,7 @@ namespace ElementsUI
             buttonUp.SetPadding(300, 20, 0, 20);
             var gd = new GradientDrawable();
             buttonUp.SetTextColor(Color.ParseColor("#428BF9"));
-            gd.SetColor(Color.ParseColor("#FFFFFF"));
+            gd.SetColor(color);
             buttonUp.SetBackgroundDrawable(gd);
             buttonUp.SetTypeface(tfn, TypefaceStyle.Bold);
             rightUpperblock.AddView(buttonUp);
@@ -86,7 +86,7 @@ namespace ElementsUI
             block.Elevation = 2;
             var gdBlock = new GradientDrawable();
             gdBlock.SetCornerRadius(64f);
-            gdBlock.SetColor(Color.ParseColor("#FFFFFF"));
+            gdBlock.SetColor(color);
             block.SetBackgroundDrawable(gdBlock);
             return block;
         }
