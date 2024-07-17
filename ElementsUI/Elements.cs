@@ -19,7 +19,7 @@ namespace ElementsUI
             blocks = new List<LinearLayout>();
         }
 
-        public LinearLayout AddLabelAndImageToBlock(LinearLayout block, string headerText, int imageResourceId, string newColor, Typeface tf, Typeface tfs, TypefaceStyle tfsn, int textsize, int subtextsize,string subheaderText = null, Button button = null, bool imageOnLeft = true)
+        public LinearLayout AddLabelAndImageToBlock(LinearLayout block, string headerText, int imageResourceId, string newColor, string newColorText, Typeface tf, Typeface tfs, TypefaceStyle tfsn, int textsize, int subtextsize,string subheaderText = null, Button button = null, bool imageOnLeft = true)
         {
             var CreateElements = new CreateElements(_context);
             var EditElements = new EditElements(_context);
@@ -41,7 +41,7 @@ namespace ElementsUI
             // Создаем TextView для заголовка
             var headerTextView = new TextView(_context);
             headerTextView.Text = headerText;
-            headerTextView.SetTextColor(Color.ParseColor("#333333"));
+            headerTextView.SetTextColor(Color.ParseColor(newColorText));
             headerTextView.SetTypeface(tf, TypefaceStyle.Bold);
             headerTextView.SetTextSize(Android.Util.ComplexUnitType.Sp, textsize);
             headerTextView.SetPadding(15,35,15,15);

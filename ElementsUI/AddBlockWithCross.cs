@@ -12,7 +12,7 @@ namespace ElementsUI
         Context context;
         public AddBlockWithCross(Context context) { this.context = context;}
 
-        public LinearLayout AddBlock(LinearLayout block, string title, string subTitle, int imgid, Button button, Typeface tf, Color color)
+        public LinearLayout AddBlock(LinearLayout block, string title, string subTitle, int imgid, Button button, Typeface tf, Color color, Color ct)
         {
             // Создаем горизонтальный LinearLayout
             var horizontalLayout = new LinearLayout(context);
@@ -27,7 +27,7 @@ namespace ElementsUI
             // Создаем TextView для заголовка
             var headerTextView = new TextView(context);
             headerTextView.Text = title;
-            headerTextView.SetTextColor(Color.ParseColor("#333333"));
+            headerTextView.SetTextColor(ct);
             headerTextView.SetTypeface(tf, TypefaceStyle.Bold);
             headerTextView.SetTextSize(Android.Util.ComplexUnitType.Sp, 20);
             headerTextView.SetPadding(15, 0, 15, 15);

@@ -12,12 +12,14 @@ namespace ElementsUI
         public int imgID;
         public Typeface tf;
         static int numElement;
+        Color ct;
 
-        public VerticalAdapter(List<Items> items, int imgID, Typeface tf)
+        public VerticalAdapter(List<Items> items, int imgID, Typeface tf, Color ct)
         {
             this.items = items;
             this.imgID = imgID;
             this.tf = tf;
+            this.ct = ct;
         }
 
         public override int ItemCount => items.Count;
@@ -51,7 +53,7 @@ namespace ElementsUI
             titleTextView.TextSize = 20;
             titleTextView.SetTypeface(tf, TypefaceStyle.Normal);
             titleTextView.Gravity = GravityFlags.Start | GravityFlags.CenterVertical;
-            titleTextView.SetTextColor(Color.ParseColor("#333333")); 
+            titleTextView.SetTextColor(ct); 
             var subtitleTextView = new TextView(parent.Context);
             subtitleTextView.TextSize = 14f;
             subtitleTextView.Gravity = GravityFlags.Start | GravityFlags.CenterVertical;

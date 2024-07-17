@@ -13,7 +13,7 @@ namespace ElementsUI
             this.mContext = context;
         }
 
-        public Button OnCreate(string buttonText, int width, int height, int leftMargin, int righMargin,float gdr)
+        public Button OnCreate(string buttonText, int width, int height, int leftMargin, int righMargin,float gdr, Color color)
         {
             LinearLayout.LayoutParams linParams = new LinearLayout.LayoutParams(
                 width,height
@@ -26,7 +26,7 @@ namespace ElementsUI
             var gd = new GradientDrawable();
             gd.SetCornerRadius(gdr);
             button.SetTextColor(Color.ParseColor("#428BF9"));
-            gd.SetColor(Color.Argb((int)(255*0.03) ,0, 16, 36));
+            gd.SetColor(color);
             button.SetBackgroundDrawable(gd);
             return button;
         }
