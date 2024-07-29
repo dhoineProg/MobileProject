@@ -1,22 +1,22 @@
-﻿using Android.Content;
-using Android.Views;
-using Android.Graphics;
-using Android.Graphics.Drawables;
-using Android.Support.V4;
-using AndroidX.CardView;
-using ElementsUI;
-using Android.Widget;
-using AndroidX.RecyclerView.Widget;
+﻿using AndroidX.RecyclerView.Widget;
+using ElementsUI.ViewModels;
 
-namespace ElementsUI
+namespace ElementsUI.View
 {
     public class ItemViewHolderVertical : RecyclerView.ViewHolder
     {
+
+        #region  Fields
+
         public ImageView _imageView;
         public TextView _titleTextView;
         public TextView _subtitleTextView;
 
-        public ItemViewHolderVertical(View itemView, ImageView imageView, TextView titleTextView, TextView subtitleTextView) : base(itemView)
+        #endregion
+
+        #region ctor
+
+        public ItemViewHolderVertical(Android.Views.View itemView, ImageView imageView, TextView titleTextView, TextView subtitleTextView) : base(itemView)
         {
             _imageView = imageView;
             _titleTextView = titleTextView;
@@ -24,11 +24,18 @@ namespace ElementsUI
 
         }
 
+        #endregion
+
+        #region Public methods
+
         public void Bind(Items item)
         {
             _imageView.SetImageResource(item.Img);
             _titleTextView.Text = item.Title;
             _subtitleTextView.Text = item.Subtitle;
         }
+
+        #endregion
+
     }
 }

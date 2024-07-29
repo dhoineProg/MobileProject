@@ -1,17 +1,20 @@
 ﻿using Android.Content;
 using Android.Views;
-using Android.Graphics;
-using Android.Graphics.Drawables;
-using Android.Support.V4;
-using ElementsUI;
 
 
-namespace ElementsUI
+namespace ElementsUI.View
 {
     public class ItemViewVertical : LinearLayout
     {
+
+        #region Fields
+
         readonly TextView _textView;
         readonly ImageView _imageView;
+
+        #endregion
+
+        #region ctor
 
         public ItemViewVertical(Context context) : base(context)
         {
@@ -25,5 +28,7 @@ namespace ElementsUI
             AddView(_textView);
             AddView(_imageView);
         }
+
+        #endregion
     }
 }

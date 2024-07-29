@@ -6,17 +6,6 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
-    <AndroidJavaSource Remove="Новая папка\**" />
-    <AndroidLibrary Remove="Новая папка\**" />
-    <AndroidNativeLibrary Remove="Новая папка\**" />
-    <Compile Remove="Новая папка\**" />
-    <EmbeddedResource Remove="Новая папка\**" />
-    <JavaSourceJar Remove="Новая папка\**" />
-    <None Remove="Новая папка\**" />
-    <ProguardConfiguration Remove="Новая папка\**" />
-    <TransformFile Remove="Новая папка\**" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="Xamarin.AndroidX.AppCompat" Version="1.7.0" />
     <PackageReference Include="Xamarin.AndroidX.CardView" Version="1.0.0.28" />
     <PackageReference Include="Xamarin.AndroidX.Lifecycle.Process" Version="2.8.2" />

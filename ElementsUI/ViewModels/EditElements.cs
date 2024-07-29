@@ -1,10 +1,10 @@
 ﻿using Android.Content;
-using Android.Views;
 using Android.Graphics;
 using Android.Graphics.Drawables;
+using Android.Views;
 
 
-namespace ElementsUI
+namespace ElementsUI.ViewModels
 {
     public class EditElements
     {

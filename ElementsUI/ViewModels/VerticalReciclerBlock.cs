@@ -1,44 +1,38 @@
 ﻿using Android.Content;
-using Android.Views;
 using Android.Graphics;
 using Android.Graphics.Drawables;
-using ElementsUI;
-using Android.Support.V4;
+using Android.Views;
 using AndroidX.RecyclerView.Widget;
 using static Android.Views.View;
-using Android.Content.Res;
-namespace ElementsUI
+namespace ElementsUI.ViewModels
 {
     public class VerticalReciclerBlock
     {
         RecyclerView recyclerView;
         Context context;
-        public VerticalReciclerBlock(Context context)
-        {
-            this.context = context;
-        }
-        public LinearLayout AddElements(LinearLayout block, string header, Typeface tf, Typeface tfHeader, Typeface tfn, int imgID, int count,  Color color, Color ct)
+        public VerticalReciclerBlock(Context context) => this.context = context;
+        public LinearLayout AddElements(LinearLayout block, string header, Typeface tf, Typeface tfHeader, Typeface tfn, int imgID, int count, Color color, Color ct)
         {
             var items = new List<Items>();
             for (int i = 0; i < count; i++)
-            {             
+            {
                 items.Add(new Items { Img = imgID, Title = "Title", Subtitle = "Description" });
             }
-            
+
             var recyclerView = new RecyclerView(context);
             recyclerView.SetLayoutManager(new LinearLayoutManager(context, LinearLayoutManager.Vertical, false));
-            var adapter = new VerticalAdapter(items, imgID, tf,ct);
+            var adapter = new VerticalAdapter(items, imgID, tf, ct);
             recyclerView.SetAdapter(adapter);
             var middleBlock = new LinearLayout(context);
             var editElements = new EditElements(context);
             var upperBlockView = new LinearLayout(context);
-            upperBlockView.Orientation = Android.Widget.Orientation.Horizontal;
+            upperBlockView.Orientation = Orientation.Horizontal;
             var leftUpperblock = new LinearLayout(context);
-            leftUpperblock.Orientation = Android.Widget.Orientation.Vertical;
+            leftUpperblock.Orientation = Orientation.Vertical;
             var rightUpperblock = new LinearLayout(context);
-            rightUpperblock.Orientation = Android.Widget.Orientation.Vertical;
+            rightUpperblock.Orientation = Orientation.Vertical;
             var lowerBlockView = new LinearLayout(context);
-            lowerBlockView.Orientation = Android.Widget.Orientation.Horizontal;
+            lowerBlockView.Orientation = Orientation.Horizontal;
             LinearLayout.LayoutParams ParamsParent = new LinearLayout.LayoutParams(900, 750);
             LinearLayout.LayoutParams Params = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MatchParent, ViewGroup.LayoutParams.WrapContent);
             LinearLayout.LayoutParams childParams = new LinearLayout.LayoutParams(0,
@@ -76,7 +70,7 @@ namespace ElementsUI
             block.AddView(upperBlockView);
             middleBlock.AddView(recyclerView);
             block.AddView(middleBlock);
-            var gdbd = new GradientDrawable();          
+            var gdbd = new GradientDrawable();
             gdbd.SetCornerRadius(40f);
             var buttonDown = new Button(context);
             buttonDown.SetTextColor(Color.ParseColor("#428BF9"));

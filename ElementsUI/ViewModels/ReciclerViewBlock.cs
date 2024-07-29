@@ -1,16 +1,12 @@
 ﻿using Android.Content;
-using Android.Views;
 using Android.Graphics;
 using Android.Graphics.Drawables;
-using ElementsUI;
-using Android.Support.V4;
+using Android.Views;
 using AndroidX.RecyclerView.Widget;
-using static Android.Icu.Text.CaseMap;
 using static Android.Views.View;
-using Android.Content.Res;
 
 
-namespace ElementsUI
+namespace ElementsUI.ViewModels
 {
     public class ReciclerViewBlock
     {
@@ -85,12 +81,12 @@ namespace ElementsUI
             middleBlock.AddView(recyclerView);
             block.AddView(middleBlock);
             var gdbd = new GradientDrawable();
-            gdbd.SetCornerRadius(40f);            
+            gdbd.SetCornerRadius(40f);
             var buttonDown = new Button(context);
             buttonDown.SetTextColor(Color.ParseColor("#428BF9"));
             buttonDown.LayoutParameters = Params;
             buttonDown.Text = "Button";
-            
+
             if (color == Color.ParseColor("#2a2a2b"))
             {
                 gdbd.SetColor(Color.Rgb(247, 247, 247));
@@ -99,7 +95,7 @@ namespace ElementsUI
             }
             else
             {
-                
+
                 gdbd.SetColor(Color.Argb(7, 0, 16, 36));
                 buttonDown.SetBackgroundDrawable(gdbd);
                 buttonDown.Touch += CustomButtonWhite_Click;
@@ -136,7 +132,7 @@ namespace ElementsUI
             shape.SetCornerRadius(40);
             if (e.Event.Action == MotionEventActions.Up || e.Event.Action == MotionEventActions.Cancel)
             {
-                shape.SetColor(Color.Rgb(247,247,247));
+                shape.SetColor(Color.Rgb(247, 247, 247));
                 button.SetBackgroundDrawable(shape);
             }
             if (e.Event.Action == MotionEventActions.Down)

@@ -1,25 +1,25 @@
 ﻿using Android.Content;
-using Android.Views;
 using Android.Graphics;
 using Android.Graphics.Drawables;
+using Android.Views;
 
 
 
-namespace ElementsUI
+namespace ElementsUI.ViewModels
 {
     public class Elements
     {
         Context _context;
         Activity act;
         List<LinearLayout> blocks;
-      
+
         public Elements(Context context)
         {
             _context = context;
             blocks = new List<LinearLayout>();
         }
 
-        public LinearLayout AddLabelAndImageToBlock(LinearLayout block, string headerText, int imageResourceId, string newColor, string newColorText, Typeface tf, Typeface tfs, TypefaceStyle tfsn, int textsize, int subtextsize,string subheaderText = null, Button button = null, bool imageOnLeft = true)
+        public LinearLayout AddLabelAndImageToBlock(LinearLayout block, string headerText, int imageResourceId, string newColor, string newColorText, Typeface tf, Typeface tfs, TypefaceStyle tfsn, int textsize, int subtextsize, string subheaderText = null, Button button = null, bool imageOnLeft = true)
         {
             var CreateElements = new CreateElements(_context);
             var EditElements = new EditElements(_context);
@@ -44,8 +44,8 @@ namespace ElementsUI
             headerTextView.SetTextColor(Color.ParseColor(newColorText));
             headerTextView.SetTypeface(tf, TypefaceStyle.Bold);
             headerTextView.SetTextSize(Android.Util.ComplexUnitType.Sp, textsize);
-            headerTextView.SetPadding(15,35,15,15);
-            
+            headerTextView.SetPadding(15, 35, 15, 15);
+
             // Создаем TextView для субзаголовка
             var subheaderTextView = new TextView(_context);
             subheaderTextView.Text = subheaderText;
@@ -59,7 +59,7 @@ namespace ElementsUI
             // Создаем ImageView для изображения
             var imageView = new ImageView(_context);
             imageView.SetImageResource(imageResourceId);
-            imageView.SetPadding(15,15,30,15);
+            imageView.SetPadding(15, 15, 30, 15);
             imageView.LayoutParameters = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WrapContent,
                 ViewGroup.LayoutParams.WrapContent);
@@ -109,7 +109,7 @@ namespace ElementsUI
             return block;
         }
 
-        public LinearLayout AddToBlock(LinearLayout block, Button btn,string title = null, Typeface tf = null)
+        public LinearLayout AddToBlock(LinearLayout block, Button btn, string title = null, Typeface tf = null)
         {
             var createElements = new CreateElements(_context);
             var editElements = new EditElements(_context);

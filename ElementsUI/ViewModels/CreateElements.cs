@@ -1,20 +1,7 @@
-﻿using System;
-using Android.Widget;
-using Android.Content;
+﻿using Android.Content;
 using Android.Views;
-using Android.Graphics;
-using System.Reflection.Emit;
-using Android;
-using Android.Graphics.Drawables;
-using Android.Text;
-using System.Collections.Generic;
-using System.IO;
-using Android.App;
-using ElementsUI;
-using Android.Hardware.Lights;
-using static Android.Icu.Text.ListFormatter;
 
-namespace ElementsUI
+namespace ElementsUI.ViewModels
 {
     public class CreateElements
     {

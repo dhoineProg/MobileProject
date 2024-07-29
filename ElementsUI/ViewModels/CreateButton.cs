@@ -1,22 +1,21 @@
 ﻿using Android.Content;
 using Android.Graphics;
 using Android.Graphics.Drawables;
-using Android.OS;
 
-namespace ElementsUI
+namespace ElementsUI.ViewModels
 {
     public class CreateButton
     {
         Context mContext;
         public CreateButton(Context context)
         {
-            this.mContext = context;
+            mContext = context;
         }
 
-        public Button OnCreate(string buttonText, int width, int height, int leftMargin, int righMargin,float gdr, Color color)
+        public Button OnCreate(string buttonText, int width, int height, int leftMargin, int righMargin, float gdr, Color color)
         {
             LinearLayout.LayoutParams linParams = new LinearLayout.LayoutParams(
-                width,height
+                width, height
                 );
             linParams.LeftMargin = leftMargin;
             linParams.RightMargin = righMargin;
