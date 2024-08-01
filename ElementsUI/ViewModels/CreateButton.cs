@@ -6,11 +6,23 @@ namespace ElementsUI.ViewModels
 {
     public class CreateButton
     {
+
+        #region Fields
+
         Context mContext;
+
+        #endregion
+
+        #region ctor
+
         public CreateButton(Context context)
         {
             mContext = context;
         }
+
+        #endregion
+
+        #region Public methods
 
         public Button OnCreate(string buttonText, int width, int height, int leftMargin, int righMargin, float gdr, Color color)
         {
@@ -19,15 +31,21 @@ namespace ElementsUI.ViewModels
                 );
             linParams.LeftMargin = leftMargin;
             linParams.RightMargin = righMargin;
+
             var button = new Button(mContext);
             button.LayoutParameters = linParams;
             button.Text = buttonText;
+
             var gd = new GradientDrawable();
             gd.SetCornerRadius(gdr);
             button.SetTextColor(Color.ParseColor("#428BF9"));
             gd.SetColor(color);
             button.SetBackgroundDrawable(gd);
+
             return button;
         }
+
+        #endregion
+
     }
 }

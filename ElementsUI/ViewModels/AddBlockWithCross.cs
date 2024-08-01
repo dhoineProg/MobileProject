@@ -27,6 +27,7 @@ namespace ElementsUI.ViewModels
             horizontalLayout.Orientation = Orientation.Horizontal;
             horizontalLayout.LayoutParameters = new LinearLayout.LayoutParams(900, 200);
             horizontalLayout.SetGravity(GravityFlags.CenterVertical);
+
             return horizontalLayout;
         }
 
@@ -35,6 +36,7 @@ namespace ElementsUI.ViewModels
             var leftLayout = new LinearLayout(context);
             leftLayout.Orientation = Orientation.Vertical;
             leftLayout.LayoutParameters = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.MatchParent, 1f);
+
             return leftLayout;
         }
 
@@ -46,6 +48,7 @@ namespace ElementsUI.ViewModels
             headerTextView.SetTypeface(tf, TypefaceStyle.Bold);
             headerTextView.SetTextSize(Android.Util.ComplexUnitType.Sp, 20);
             headerTextView.SetPadding(15, 0, 15, 15);
+
             return headerTextView;
         }
 
@@ -57,6 +60,7 @@ namespace ElementsUI.ViewModels
             subheaderTextView.SetTypeface(tf, TypefaceStyle.Normal);
             subheaderTextView.SetTextSize(Android.Util.ComplexUnitType.Sp, 14);
             subheaderTextView.SetPadding(15, 0, 15, 0);
+
             return subheaderTextView;
         }
 
@@ -67,18 +71,19 @@ namespace ElementsUI.ViewModels
             imageView.LayoutParameters = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.WrapContent,
                 ViewGroup.LayoutParams.WrapContent);
+
             return imageView;
         }
 
         private void AddElementsToLayouts(LinearLayout horizontalLayout, LinearLayout leftLayout, ImageView imageView, TextView headerTextView, TextView subheaderTextView, Button button)
         {
             horizontalLayout.AddView(imageView);
-            imageView.SetPadding(15, 15, 30, 15);
             leftLayout.AddView(headerTextView);
             leftLayout.AddView(subheaderTextView);
             horizontalLayout.AddView(leftLayout);
-            leftLayout.SetPadding(5, 40, 0, 0);
             horizontalLayout.AddView(button);
+            leftLayout.SetPadding(5, 40, 0, 0);
+            imageView.SetPadding(15, 15, 30, 15);
         }
 
         private void SetBlockBackground(LinearLayout block, Color color)

@@ -8,11 +8,22 @@ namespace ElementsUI.ViewModels
 {
     public class EditElements
     {
+        #region Fields
+
         Context context;
+
+        #endregion
+
+        #region ctor
+
         public EditElements(Context context_)
         {
             context = context_;
         }
+
+        #endregion
+
+        #region Public methods
         public void SetBlockWidth(LinearLayout block, int width, int height)
         {
             block.LayoutParameters = new LinearLayout.LayoutParams(
@@ -49,5 +60,7 @@ namespace ElementsUI.ViewModels
             background.SetColor(Color.ParseColor(newColor));
             block.SetBackgroundDrawable(background);
         }
+
+        #endregion
     }
 }

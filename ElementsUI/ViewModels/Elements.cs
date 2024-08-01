@@ -9,15 +9,84 @@ namespace ElementsUI.ViewModels
 {
     public class Elements
     {
+        #region Fields
+
         Context _context;
+
         Activity act;
+
         List<LinearLayout> blocks;
+
+        #endregion
+
+        #region ctor
 
         public Elements(Context context)
         {
             _context = context;
             blocks = new List<LinearLayout>();
         }
+
+        #endregion
+
+        #region Private methods
+
+        void CreateHorizontalLayout(out LinearLayout horizontalLayout)
+        {
+            horizontalLayout = new LinearLayout(_context);
+            horizontalLayout.Orientation = Orientation.Horizontal;
+            horizontalLayout.LayoutParameters = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MatchParent,
+                ViewGroup.LayoutParams.WrapContent);
+        }
+
+        void CreateVerticalLayouts(out LinearLayout verticalLayoutLeft, out LinearLayout verticalLayoutRight)
+        {
+            verticalLayoutLeft = new LinearLayout(_context);
+            verticalLayoutLeft.Orientation = Orientation.Vertical;
+            verticalLayoutLeft.LayoutParameters = new LinearLayout.LayoutParams(
+                0,
+                ViewGroup.LayoutParams.WrapContent,
+                1.0f);
+            verticalLayoutLeft.SetGravity(GravityFlags.Left);
+
+            verticalLayoutRight = new LinearLayout(_context);
+            verticalLayoutRight.Orientation = Orientation.Vertical;
+            verticalLayoutRight.LayoutParameters = new LinearLayout.LayoutParams(
+                0,
+                ViewGroup.LayoutParams.WrapContent,
+                1.0f);
+            verticalLayoutRight.SetGravity(GravityFlags.Right);
+        }
+
+        void CreateTitleView(string title, Typeface tf, out TextView titleView)
+        {
+            titleView = new TextView(_context);
+            titleView.Text = title;
+            titleView.SetTextColor(Color.ParseColor("#333333"));
+            titleView.SetTypeface(tf, TypefaceStyle.Bold);
+            titleView.SetTextSize(Android.Util.ComplexUnitType.Sp, 22f);
+            titleView.SetPadding(15, 15, 15, 40);
+        }
+
+        void SetupLayouts(LinearLayout horizontalLayout, LinearLayout verticalLayoutLeft, LinearLayout verticalLayoutRight, TextView titleView, Button btn)
+        {
+            verticalLayoutLeft.AddView(titleView);
+            verticalLayoutRight.AddView(btn);
+            horizontalLayout.AddView(verticalLayoutLeft);
+            horizontalLayout.AddView(verticalLayoutRight);
+        }
+
+        void SetBlockBackground(LinearLayout block)
+        {
+            GradientDrawable background = new GradientDrawable();
+            background.SetCornerRadius(52f);
+            block.SetBackgroundDrawable(background);
+        }
+
+        #endregion
+
+        #region Public methods
 
         public LinearLayout AddLabelAndImageToBlock(LinearLayout block, string headerText, int imageResourceId, string newColor, string newColorText, Typeface tf, Typeface tfs, TypefaceStyle tfsn, int textsize, int subtextsize, string subheaderText = null, Button button = null, bool imageOnLeft = true)
         {
@@ -111,44 +180,12 @@ namespace ElementsUI.ViewModels
 
         public LinearLayout AddToBlock(LinearLayout block, Button btn, string title = null, Typeface tf = null)
         {
-            var createElements = new CreateElements(_context);
-            var editElements = new EditElements(_context);
-            //Создаем горизонтальный layout
-            var horizontalLayout = new LinearLayout(_context);
-            horizontalLayout.Orientation = Orientation.Horizontal;
-            horizontalLayout.LayoutParameters = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MatchParent,
-                ViewGroup.LayoutParams.WrapContent);
-            //Создаем вертикальный layout 
-            var verticalLayoutleft = new LinearLayout(_context);
-            verticalLayoutleft.Orientation = Orientation.Vertical;
-            verticalLayoutleft.LayoutParameters = new LinearLayout.LayoutParams(
-                0,
-                ViewGroup.LayoutParams.WrapContent,
-                1.0f);
-            verticalLayoutleft.SetGravity(GravityFlags.Left);
-            var verticalLayoutright = new LinearLayout(_context);
-            verticalLayoutright.Orientation = Orientation.Vertical;
-            verticalLayoutright.LayoutParameters = new LinearLayout.LayoutParams(
-                0,
-                ViewGroup.LayoutParams.WrapContent,
-                1.0f);
-            verticalLayoutright.SetGravity(GravityFlags.Right);
-            verticalLayoutright.AddView(btn);
-            //Создаем title
-            var Title = new TextView(_context);
-            Title.Text = title;
-            Title.SetTextColor(Color.ParseColor("#333333"));
-            Title.SetTypeface(tf, TypefaceStyle.Bold);
-            Title.SetTextSize(Android.Util.ComplexUnitType.Sp, 22f);
-            Title.SetPadding(15, 15, 15, 40);
-            verticalLayoutleft.AddView(Title);
-            horizontalLayout.AddView(verticalLayoutleft);
-            horizontalLayout.AddView(verticalLayoutright);
-            GradientDrawable background = new GradientDrawable();
-            background.SetCornerRadius(52f);
+            CreateHorizontalLayout(out var horizontalLayout);
+            CreateVerticalLayouts(out var verticalLayoutLeft, out var verticalLayoutRight);
+            CreateTitleView(title, tf, out var titleView);
 
-            block.SetBackgroundDrawable(background);
+            SetupLayouts(horizontalLayout, verticalLayoutLeft, verticalLayoutRight, titleView, btn);
+            SetBlockBackground(block);
             block.AddView(horizontalLayout);
             blocks.Add(block);
             return block;
@@ -161,5 +198,8 @@ namespace ElementsUI.ViewModels
                 parentLayout.AddView(block);
             }
         }
+
+        #endregion
+
     }
 }
